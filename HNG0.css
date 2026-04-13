@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body#main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: #f1efe8;
+  font-family: 'Inter', sans-serif;
+}
+
+ /* CARD  */
+article#cardwrap {
+  background: #ffffff;
+  border: 0.5px solid #d3d1c7;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 520px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.07);
+}
+
+/* ── TITLE ── */
+h2#cardhead {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a18;
+  line-height: 1.3;
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 0.5px solid #e8e6df;
+  transition: text-decoration 0.2s, color 0.2s;
+}
+
+h2#cardhead.completed {
+  text-decoration: line-through;
+  color: #b4b2a9;
+}
+
+/* ── DESCRIPTION ── */
+p#description {
+  font-size: 13.5px;
+  color: #5f5e5a;
+  line-height: 1.65;
+  padding: 1rem 1.5rem;
+  border-bottom: 0.5px solid #e8e6df;
+  transition: color 0.2s;
+}
+
+p#description.completed {
+  color: #b4b2a9;
+}
+
+/* priority, due date, time remaining */
+article#cardwrap > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.9rem 1.5rem;
+  flex-wrap: wrap;
+  border-bottom: 0.5px solid #e8e6df;
+}
+
+strong#priority {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 8px;
+  background: red;
+  color: white;
+  border: none;
+  letter-spacing: 0.01em;
+}
+
+/* strong#priority.high   { background: #e24b4a; }
+strong#priority.medium { background: #ef9f27; }
+strong#priority.low    { background: #1d9e75; } */
+
+span#due-date {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #1a1a18;
+}
+
+span#time-remaining {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #e24b4a;
+  transition: color 0.3s;
+}
+
+span#time-remaining.upcoming {
+  color: #1d9e75;
+}
+
+/* ── STATUS ── */
+span#status {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  background-color: #e4e00d;
+  border-bottom: 0.5px solid #e8e6df;
+  display: inline-block;
+  margin: 5px 25px;
+  text-align: center;
+}
+
+
+
+span#status.done::before { background: #1d9e75; }
+span#status.done         { color: #1d9e75; }
+
+/* ── CHECKBOX ROW ── */
+article#cardwrap > p:last-of-type {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 0.5px solid #e8e6df;
+}
+
+input#toggleCheck {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid #b4b2a9;
+  cursor: pointer;
+  accent-color: #2c2c2a;
+  flex-shrink: 0;
+}
+
+input#toggleCheck + label {
+  font-size: 13.5px;
+  color: #5f5e5a;
+  cursor: pointer;
+  margin-left: 8px !important;
+}
+h2#cardhead.completed {
+    text-decoration: line-through;
+    color: #b4b2a9;
+}
+
+span#status.done {
+  background-color: #1d9e75;
+  color: white;
+}
+
+/* ── FOOTER DIV: tags + buttons ── */
+article#cardwrap > div:last-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+article#cardwrap > div:last-of-type ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  flex: 1;
+  align-items: center;
+}
+
+article#cardwrap > div:last-of-type ul li {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: default;
+  transition: transform 0.12s;
+}
+
+article#cardwrap > div:last-of-type ul li:hover {
+  transform: translateY(-1px);
+}
+
+li#work {
+  background: #f1efe8;
+  color: #2c2c2a;
+  border: 0.5px solid #d3d1c7;
+}
+
+li#urgent {
+  background: #e24b4a;
+  color: #ffffff;
+}
+
+li#home {
+  background: #378add;
+  color: #ffffff;
+}
+
+button#editBtn,
+button#deleteBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #d3d1c7;
+  background: #ffffff;
+  color: #1a1a18;
+  transition: background 0.15s, transform 0.12s;
+}
+
+button#editBtn {
+  margin-right: 8px;
+}
+
+button#editBtn:hover,
+button#deleteBtn:hover {
+  background: #f1efe8;
+  transform: translateY(-1px);
+}
+
+button#editBtn:focus-visible,
+button#deleteBtn:focus-visible,
+input#toggleCheck:focus-visible {
+  outline: 2px solid #378add;
+  outline-offset: 2px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 420px) {
+  h2#cardhead                           { font-size: 15px; padding: 1rem 1.1rem 0.9rem; }
+  p#description                         { padding: 0.9rem 1.1rem; }
+  article#cardwrap > div:first-of-type  { padding: 0.9rem 1.1rem; }
+  p#status                              { padding: 0.85rem 1.1rem; }
+  article#cardwrap > p:last-of-type     { padding: 0.85rem 1.1rem; }
+
+  article#cardwrap > div:last-of-type {
+    padding: 0.9rem 1.1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button#editBtn,
+  button#deleteBtn {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  button#editBtn {
+    margin-bottom: 8px;
+  }
+}
