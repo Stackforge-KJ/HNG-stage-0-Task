@@ -66,7 +66,6 @@ body#main {
 #priorityText {
    height: 20PX;
     width: 20PX;
-    background: forestgreen;
     border-radius: 50%;
     color: #475569;
 }
@@ -93,7 +92,6 @@ body#main {
     gap: 4px;
 }
 
-/* Description Section */
 #descSect {
     background: #f8fafc;
     padding: 16px;
