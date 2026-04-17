@@ -1,38 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HNG TASK CARD</title>
-    <link rel="stylesheet" href="./HNG0.css">
+    <link rel="stylesheet" href="./HNG0.css" />
 </head>
+
 <body id="main">
-    
     <article id="cardwrap" data-testid="test-todo-card">
-        <h2 id="cardhead" data-testid="test-todo-title">HNG PROJECT REPORT STAGE 0</h2>
-        <p id="description" data-testid="test-todo-description" > Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia fugiat neque, corrupti, accusamus vel doloribus sequi at nesciunt eius esse fugit ab labore dicta, molestias debitis sunt beatae iste perferendis! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis consectetur voluptatem neque, veritatis doloribus repudiandae molestias eius excepturi veniam nobis, soluta cupiditate! Dolorem impedit incidunt quaerat optio facilis eveniet eius.</p>
-        
-        <div> 
-            <strong id="priority" data-testid="test-todo-priority" aria-label="Priority: HIGH">HIGH</strong>
-        <time id="due-date" datetime="2026-04-11" data-testid="test-todo-due-date">Due Apr 11, 2026</time>            <span id="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite"></span>
+
+        <div id="titleSect">
+            <label for="Title">Title</label>
+            <h2 id="cardTitle" data-testid="test-todo-title">HNG PROJECT REPORT STAGE 0
+            </h2>
         </div>
-        
-        <span id="status" data-testid="test-todo-status" aria-label="Task status">Pending</span>
-        <p><input id="toggleCheck" type="checkbox" data-testid="test-todo-complete-toggle"><label for="toggleCheck" style="margin-left:8px;cursor:pointer;">Mark as complete</label></p>
+
 
         <div>
+            <div id="prioritySection">
+                <span id="priorityIndicator" data-testid="test-todo-priority-indicator" class="high"></span>
 
-            <ul data-testid="test-todo-tags" role="list">
-            <li id="work" data-testid="test-todo-tag-work" aria-label="Work">Work</li>
-            <li id="urgent" data-testid="test-todo-tag-urgent" aria-label="Urgent">Urgent</li>
-            <li id="home" data-testid="test-todo-tag-home" aria-label="Home">Home</li>
-            </ul>
 
-            <button id="editBtn" data-testid="test-todo-edit-button">Edit</button>
-            <button id="deleteBtn" data-testid="test-todo-delete-button">Delete</button>
+                <label for="priorityControl">Change priority:</label>
+                <select id="priorityControl" data-testid="test-todo-priority-control" aria-label="Task priority">
+                    <option value="High" selected>High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <span id="priorityText" data-testid="test-todo-priority"></span>
+
+            </div>
+
+            <div id="duetime">
+                <input id="due-date" type="date" data-testid="test-todo-due-date" value="2026-04-11"
+                    aria-label="Due date" disabled />
+
+                <label for="time-remaining"> Time remaining; </label>
+                <span id="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite"></span>
+
+                <span id="overdueIndicator" data-testid="test-todo-overdue-indicator" aria-live="polite"
+                    style="display: none">Overdue</span>
+            </div>
         </div>
-        
+
+
+        <div id="collapsibleSection" data-testid="test-todo-collapsible-section">
+
+            <div id="descSect">
+                <p id="description" data-testid="test-todo-description">The current objective involves the comprehensive
+                    overhaul of the task management module to ensure full compliance with modern accessibility standards
+                    and stateful interactivity requirements. This specific sprint focuses on the implementation of
+                    dynamic 'due date' logic, where the system must calculate time remaining in real-time—updating every
+                    sixty seconds to reflect accurate countdowns or overdue statuses. In addition to time management,
+                    the component must handle complex layout transitions between a standard view and an interactive edit
+                    mode. During this transition, the application must maintain data integrity, allowing users to modify
+                    titles, descriptions, and priority levels without losing state upon a 'cancel' action. We are
+                    utilizing a custom CSS architecture that avoids variables to maintain broad browser compatibility
+                    while ensuring the UI remains crisp on mobile, tablet, and desktop viewports. Special attention is
+                    required for the 'expand/collapse' behavior of this description block.</p>
+
+            </div>
+        </div>
+
+
+        <div style="display: flex; justify-content: flex-end;">
+            <button style="text-decoration: none;" id="expandToggle" data-testid="test-todo-expand-toggle"
+                aria-expanded="false" aria-controls="collapsibleSection">
+                Show more
+            </button>
+        </div>
+
+
+        <p>
+            <input id="toggleCheck" type="checkbox" data-testid="test-todo-complete-toggle" />
+            <label for="toggleCheck" style="margin-left: 8px; cursor: pointer">Mark as complete</label>
+        </p>
+
+
+        <div>
+            <span id="status" data-testid="test-todo-status" aria-label="Task status: Pending"></span>
+
+            <label for="statusControl">Change status:</label>
+            <select id="statusControl" data-testid="test-todo-status-control" aria-label="Task status">
+                <option value="Pending" selected>Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+            </select>
+        </div>
+
+
+        <form id="Formcontainer" data-testid="test-todo-edit-form" style="display: none">
+            <label for="editTitle">Title</label>
+            <input id="editTitle" type="text" data-testid="test-todo-edit-title-input" placeholder="Task title" />
+
+
+            <div id="prioritywrap">
+                <span id="priorityIndicatorEdit"></span>
+            </div>
+
+            <label for="editDesc">Description</label>
+            <textarea id="editDesc" data-testid="test-todo-edit-description-input"
+                placeholder="Task description"></textarea>
+
+            <label for="editPriority">Priority</label>
+            <select id="editPriority" data-testid="test-todo-edit-priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High" selected>High</option>
+            </select>
+
+            <label for="editDueDate">Due Date</label>
+            <input id="editDueDate" type="date" data-testid="test-todo-edit-due-date-input" value="2026-04-11" />
+        </form>
+
+        <div id="allbtn">
+            <div id="savebtnsect">
+                <button type="button" id="editBtn" data-testid="test-todo-edit-button">
+                    Edit
+                </button>
+                <button style="display: none" id="saveBtn" type="button" data-testid="test-todo-save-button">
+                    Save
+                </button>
+            </div>
+            <div id="delbtnsect">
+                <button id="deleteBtn" data-testid="test-todo-delete-button">
+                    Delete
+                </button>
+                <button style="display: none" id="cancelBtn" type="button" data-testid="test-todo-cancel-button">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+
+        <div id="Tags">
+            <ul data-testid="test-todo-tags" role="list">
+                <li style="color: white; background-color: #2563eb" id="work" data-testid="test-todo-tag-work"
+                    aria-label="Work">
+                    Work
+                </li>
+                <li style="color: white; background-color: #ef4444;" id="urgent" data-testid="test-todo-tag-urgent"
+                    aria-label="Urgent">
+                    Urgent
+                </li>
+                <li style="color: white; background-color: #10b981;" id="home" data-testid="test-todo-tag-home"
+                    aria-label="Home">
+                    Home
+                </li>
+            </ul>
+        </div>
     </article>
 </body>
-<script src="./HNG0.js"></script>
+<script type="module" src="./HNG0.js"></script>
 </html>
