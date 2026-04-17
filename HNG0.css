@@ -66,6 +66,7 @@ body#main {
 #priorityText {
    height: 20PX;
     width: 20PX;
+    background: red;
     border-radius: 50%;
     color: #475569;
 }
